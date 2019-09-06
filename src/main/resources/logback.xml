@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <property name="rootPath" value="./logs" />
+    <property name="baseFile" value="spider"></property>
+    <property name="log.root.level" value="INFO"></property>
+    
+    <!-- 控制台输出日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%X{logthreadId} [%date{yyyy-MM-dd HH:mm:ss.SSS}] %level %logger{36} %line - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- 文件输出日志 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${rootPath}/${baseFile}.log</File>
+        <!-- 日志文件rolling策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${rootPath}/${baseFile}_%d{yyyy-MM-dd}.log.gz
+            </FileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <!-- 日志输出格式 -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%X{logthreadId} [%date{yyyy-MM-dd HH:mm:ss.SSS}] %level %logger{36} %line - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+    
+    <!-- 文件输出日志 (文件大小策略进行文件输出，每小时产生一个日志文件给异常监控平台进行分析) -->
+    <appender name="ERRORFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${rootPath}/${baseFile}_error.log</File>
+        <!-- 日志文件rolling策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${rootPath}/${baseFile}_error_%d{yyyy-MM-dd}.log.gz
+            </FileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+          <level>ERROR</level>
+          <onMatch>ACCEPT</onMatch>
+          <onMismatch>DENY</onMismatch>
+        </filter>
+        <!-- 日志输出格式 -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%X{logthreadId} [%date{yyyy-MM-dd HH:mm:ss.SSS}] %level %logger{36} %line - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+          <queueSize>10000</queueSize>
+          <appender-ref ref="FILE" />
+    </appender>
+    
+    <logger name="org.springframework" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ASYNC" />
+        <appender-ref ref="ERRORFILE" />
+    </logger>
+
+    <logger name="org.hibernate" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ASYNC" />
+        <appender-ref ref="ERRORFILE" />
+    </logger>
+    
+    <logger name="org.apache.commons" level="WARN">
+        <appender-ref ref="ERRORFILE" />
+    </logger>
+    
+     <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ASYNC" />
+        <appender-ref ref="ERRORFILE" />
+    </root>
+     
+</configuration>

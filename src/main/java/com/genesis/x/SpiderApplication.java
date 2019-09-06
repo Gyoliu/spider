@@ -1,5 +1,6 @@
 package com.genesis.x;
 
+import com.genesis.x.crawler.tonghuashun.GaiNian;
 import com.genesis.x.crawler.zbj.ZbjAllCategory;
 import com.genesis.x.crawler.zbj.ZbjDemandList;
 import com.genesis.x.crawler.zbj.ZbjServiceList;
@@ -23,29 +24,12 @@ public class SpiderApplication implements CommandLineRunner {
 	@Autowired
 	private ZbjDemandList demandList;
 
+	@Autowired
+	private GaiNian gaiNian;
+
 	@Override
 	public void run(String... strings) throws Exception {
-		/*zbjAllCategory.setSpiderSuccessListener(new SpiderListener() {
-			@Override
-			public void onSuccess(Request request) {
-				try {
-					Thread.sleep(1000 * 3);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				System.out.println("success!!!!!!");
-				zbjServiceList.start();
-			}
-
-			@Override
-			public void onError(Request request) {
-
-			}
-		});
-		zbjAllCategory.start();*/
-
-//		zbjServiceList.start();
-		demandList.start();
+		gaiNian.start();
 	}
 
 	public static void main(String[] args) {

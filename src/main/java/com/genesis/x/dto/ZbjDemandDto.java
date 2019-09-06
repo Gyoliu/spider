@@ -28,7 +28,6 @@ public class ZbjDemandDto {
     @Column(name = "status")
     private Integer status;
 
-
     @Column(name = "page_url")
     private String pageUrl;
 
@@ -37,6 +36,12 @@ public class ZbjDemandDto {
 
     @Column(name = "title")
     private String title;
+
+    @Column(name = "publish_time")
+    private String publishTime;
+
+    @Column(name = "quota")
+    private String quota;
 
     @Column(name = "topics")
     private String topics;
