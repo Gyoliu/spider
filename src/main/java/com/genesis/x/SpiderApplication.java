@@ -1,6 +1,7 @@
 package com.genesis.x;
 
 import com.genesis.x.crawler.tonghuashun.GaiNian;
+import com.genesis.x.crawler.tonghuashun.Gegu;
 import com.genesis.x.crawler.zbj.ZbjAllCategory;
 import com.genesis.x.crawler.zbj.ZbjDemandList;
 import com.genesis.x.crawler.zbj.ZbjServiceList;
@@ -27,9 +28,12 @@ public class SpiderApplication implements CommandLineRunner {
 	@Autowired
 	private GaiNian gaiNian;
 
+	@Autowired
+	private Gegu gegu;
+
 	@Override
 	public void run(String... strings) throws Exception {
-		gaiNian.start();
+		gegu.start();
 	}
 
 	public static void main(String[] args) {
