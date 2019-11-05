@@ -22,7 +22,7 @@ import java.util.UUID;
 /**
  * @Author: liuxing
  * @Date: 2019/9/6 14:15
- * @Description:
+ * @Description: 同花顺 概念
  */
 @Slf4j
 @Component

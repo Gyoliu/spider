@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 /**
  * @Author: liuxing
  * @Date: 2019/9/6 14:15
- * @Description:
+ * @Description: 同花顺 个股
  */
 @Slf4j
 @Component
