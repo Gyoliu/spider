@@ -133,4 +133,7 @@ public class XueqiuASDto {
     @Column(name = "volume_ratio")
     private Double volume_ratio;
 
+    @Column(name = "checked")
+    private Integer checked;
+
 }
