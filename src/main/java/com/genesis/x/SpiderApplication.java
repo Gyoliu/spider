@@ -3,6 +3,7 @@ package com.genesis.x;
 import com.genesis.x.crawler.tonghuashun.GaiNian;
 import com.genesis.x.crawler.tonghuashun.Gegu;
 import com.genesis.x.crawler.xueqiu.AsYiLan;
+import com.genesis.x.crawler.xueqiu.Hot;
 import com.genesis.x.crawler.xueqiu.SymbolMonth;
 import com.genesis.x.crawler.zbj.ZbjAllCategory;
 import com.genesis.x.crawler.zbj.ZbjDemandList;
@@ -39,9 +40,12 @@ public class SpiderApplication implements CommandLineRunner {
 	@Autowired
 	private SymbolMonth symbolMonth;
 
+	@Autowired
+	private Hot hot;
+
 	@Override
 	public void run(String... strings) throws Exception {
-		symbolMonth.start();
+		hot.start();
 	}
 
 	public static void main(String[] args) {
