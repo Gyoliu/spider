@@ -3,8 +3,11 @@ package com.genesis.x;
 import com.genesis.x.crawler.xueqiu.SymbolMonth;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
+import org.apache.http.HttpHost;
 import org.junit.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +23,15 @@ import java.util.List;
 public class DateTest {
 
     private static final String PATTERN = "yyyy-MM-dd";
+
+    @Test
+    public void Test02() throws MalformedURLException {
+        HttpHost proxy = new HttpHost("proxy.example.com");
+        URL url = new URL("https://openai.weixin.qq.com/openapi/nlp/sensitive");
+        System.out.println(url.getHost());
+        System.out.println(proxy.getHostName());
+
+    }
 
     @Test
     public void test01() throws ParseException {

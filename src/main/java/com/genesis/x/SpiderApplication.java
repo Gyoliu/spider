@@ -8,10 +8,13 @@ import com.genesis.x.crawler.xueqiu.SymbolMonth;
 import com.genesis.x.crawler.zbj.ZbjAllCategory;
 import com.genesis.x.crawler.zbj.ZbjDemandList;
 import com.genesis.x.crawler.zbj.ZbjServiceList;
+import com.genesis.x.robot.HttpClientUtils;
+import com.genesis.x.robot.WeixinRobotApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.client.RestTemplate;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.SpiderListener;
@@ -43,9 +46,12 @@ public class SpiderApplication implements CommandLineRunner {
 	@Autowired
 	private Hot hot;
 
+	@Autowired
+	private WeixinRobotApi weixinRobotApi;
+
 	@Override
 	public void run(String... strings) throws Exception {
-		hot.start();
+		weixinRobotApi.message("a", "跨法人费用报销");
 	}
 
 	public static void main(String[] args) {
