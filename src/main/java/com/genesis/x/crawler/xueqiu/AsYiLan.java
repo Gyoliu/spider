@@ -87,7 +87,7 @@ public class AsYiLan implements PageProcessor, Pipeline {
             pageNum.getAndDecrement();
             System.out.println("分页:" + url);
             try {
-                int sleep = (new Random().nextInt(60) + 1) * 10000;
+                int sleep = (new Random().nextInt(60) + 1) * 100;
                 System.out.println("睡眠时间：" + sleep);
                 Thread.sleep(sleep);
             } catch (InterruptedException e) {

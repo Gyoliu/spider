@@ -10,6 +10,7 @@ import com.genesis.x.crawler.zbj.ZbjDemandList;
 import com.genesis.x.crawler.zbj.ZbjServiceList;
 import com.genesis.x.robot.HttpClientUtils;
 import com.genesis.x.robot.WeixinRobotApi;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +20,7 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.SpiderListener;
 
+@Slf4j
 @SpringBootApplication
 public class SpiderApplication implements CommandLineRunner {
 
@@ -51,7 +53,9 @@ public class SpiderApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		weixinRobotApi.message("a", "跨法人费用报销");
+//		asYiLan.start();
+		hot.start();
+		log.info("数据抓取完成");
 	}
 
 	public static void main(String[] args) {
