@@ -54,8 +54,8 @@ public class SpiderApplication implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 //		asYiLan.start();
-		hot.start();
-		log.info("数据抓取完成");
+//		hot.start();
+//		log.info("数据抓取完成");
 	}
 
 	public static void main(String[] args) {
